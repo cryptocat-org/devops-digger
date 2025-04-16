@@ -26,7 +26,7 @@ generate_projects:
     createProjectName: true
     createWorkspace: true
     defaultWorkflow: default
-    workflow_file: digger-run-dev.yml
+    workflow_file: digger_workflow.yml
 #    executionOrderGroups: true
 workflows:
   default:
