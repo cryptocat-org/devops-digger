@@ -40,8 +40,6 @@ jobs:
 #          aws-region: eu-central-1
 #          profile: devops-dev
 
-      - name: ${{ fromJSON(github.event.inputs.spec).job_id }}
-        run: echo "job id ${{ fromJSON(github.event.inputs.spec).job_id }}"
       - uses: diggerhq/digger@vLatest
         with:
           digger-spec: ${{ inputs.spec }}
