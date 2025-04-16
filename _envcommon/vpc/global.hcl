@@ -10,7 +10,7 @@ locals {
   base_module = ""
 
   # Github URL
-  base_source = "git::https://github.com/cryptocat-org/modules.git/${local.base_module}?ref=${local.base_version}"
+  base_source = "git::ssh://git@github.com/cryptocat-org/modules.git/${local.base_module}?ref=${local.base_version}"
 
   ### --- Get envs from files in folders
 
