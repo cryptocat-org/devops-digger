@@ -1,0 +1,9 @@
+*.tfstate
+*.tfstate.backup
+.terraform
+
+# Ignore terragrunt
+.terragrunt-cache
+terragrunt.iml
+
+.terraform.lock.hcl
