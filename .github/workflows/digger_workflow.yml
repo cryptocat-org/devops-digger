@@ -51,6 +51,9 @@ jobs:
           # https://github.com/gruntwork-io/terragrunt/releases
           setup-terragrunt: true
           terragrunt-version: 0.77.6
+          mode: drift-detection
+          post-plans-as-one-comment: true
+          setup-checkov: true
           #cache-dependencies: true
 
           # https://github.com/hashicorp/terraform/releases
