@@ -3,10 +3,10 @@
 #    - block_name: dev
 #      terragrunt: true
 #      root_dir: "devops-dev/"
-#      workflow: dev_workflow
-#      workflow_file: digger-run-dev.yml
+#      workflow: default
+#      workflow_file: digger_workflow.yml
 #workflows:
-#  dev_workflow:
+#  default:
 #    plan:
 #      steps:
 #        - init
@@ -27,7 +27,7 @@ generate_projects:
     createWorkspace: true
     defaultWorkflow: default
     workflow_file: digger_workflow.yml
-#    executionOrderGroups: true
+    executionOrderGroups: true
 workflows:
   default:
     plan:
