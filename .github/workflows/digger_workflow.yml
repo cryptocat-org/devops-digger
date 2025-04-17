@@ -50,9 +50,9 @@ jobs:
           setup-terragrunt: true
           # https://github.com/gruntwork-io/terragrunt/releases
           terragrunt-version: 0.77.6
+          cache-dependencies: true
           setup-terraform: true
-          # https://github.com/hashicorp/terraform/releases
-          terraform-version: v1.11.3
+          setup-tfenv: true
           setup-aws: true
           aws-role-to-assume: arn:aws:iam::052701461513:role/terrateam
         env:
