@@ -14,15 +14,15 @@ workflows:
   default:
     plan:
       steps:
-        - init
+        - validate
         - plan
-        - run: echo "Terragrunt generation!"
-    apply:
-      steps:
-        - init
-        - plan
-        - apply
-
+#        - run: echo "Terragrunt generation!"
+#    apply:
+#      steps:
+#        - init
+#        - plan
+#        - apply
+#
 #auto_merge: true
 #generate_projects:
 #  terragrunt_parsing:
