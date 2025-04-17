@@ -42,6 +42,17 @@ jobs:
 
       - name: ${{ fromJSON(github.event.inputs.spec).job_id }}
         run: echo "job id ${{ fromJSON(github.event.inputs.spec).job_id }}"
+
+      - name: get gh token from my-gh-app
+        id: gh-app-auth
+        uses: getsentry/action-github-app-token@v1
+        with:
+          app_id: ${{ secrets.GH_APP_ID }}
+          private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+
+      - name: hack for github internal repo access
+        run: git config --global url."https://x-access-token:${{ steps.gh-app-auth.outputs.token }}@github.com".insteadOf ssh://git@github.com
+
       - uses: diggerhq/digger@vLatest
         with:
           digger-spec: ${{ inputs.spec }}
