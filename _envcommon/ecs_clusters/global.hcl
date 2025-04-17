@@ -4,13 +4,13 @@ locals {
   ### --- Base module
 
   # GitHub Tag/Branch
-  base_version = "modules/aws/ecs_cluster/generic/v1.0.1"
+  base_version = "modules/aws/ecs_cluster/generic/v1.0.0"
 
   # Module Path
   base_module = ""
 
   # Github URL
-  base_source = "git::https://github.com/apihlak/modules-testing.git/${local.base_module}?ref=${local.base_version}"
+  base_source = "git::ssh://git@github.com/cryptocat-org/modules.git/${local.base_module}?ref=${local.base_version}"
 
   ### --- Get envs from files in folders
 
@@ -48,7 +48,7 @@ locals {
 }
 
 dependency "vpc" {
-  config_path = "${get_terragrunt_dir()}/../../../../../global/${local.region}/common/vpc/dev2"
+  config_path = "${get_terragrunt_dir()}/../../../../../global/${local.region}/common/vpc/dev3"
 
   # Configure mock outputs for the `validate` command that are returned when there are no outputs available (e.g the
   # module hasn't been applied yet.
