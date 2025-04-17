@@ -48,7 +48,7 @@ locals {
 }
 
 dependency "vpc" {
-  config_path = "${get_terragrunt_dir()}/../../../../../global/${local.region}/common/vpc/dev2"
+  config_path = "${get_terragrunt_dir()}/../../../../../global/${local.region}/common/vpc/dev3"
 
   # Configure mock outputs for the `validate` command that are returned when there are no outputs available (e.g the
   # module hasn't been applied yet.
