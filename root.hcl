@@ -37,7 +37,7 @@ provider "aws" {
   region = "${local.region}"
 
   # Only these AWS Account Profiles may be operated on by this template
-  #profile = "${local.aws_profile}"
+  profile = "${local.aws_profile}"
 }
 EOF
 }
@@ -50,7 +50,7 @@ remote_state {
     bucket                = local.bucket
     key                   = "${path_relative_to_include()}/terraform.tfstate"
     region                = local.backend_region
-    #profile               = local.aws_profile
+    profile               = local.aws_profile
     dynamodb_table        = local.dynamodb_table
     disable_bucket_update = true
   }

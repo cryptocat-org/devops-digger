@@ -24,34 +24,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-#      # SSH GitHub access to modules repo
-#      - name: Setup SSH key for Git access
-#        run: |
-#          mkdir -p ~/.ssh
-#          echo "${{ secrets.DIGGER_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-#          chmod 600 ~/.ssh/id_rsa
-#          ssh-keyscan github.com >> ~/.ssh/known_hosts
-#      # https://github.com/aws-actions/configure-aws-credentials/issues/112
-#      - name: Configure AWS credentials using OIDC
-#        id: configure-aws-credentials
-#        uses: Moulick/configure-multiple-aws-roles@v4
-#        with:
-#          role-to-assume: arn:aws:iam::052701461513:role/terrateam
-#          aws-region: eu-central-1
-#          profile: devops-dev
+      # SSH GitHub access to private modules repo
+      - name: Setup SSH key for Git access
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DIGGER_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+      # https://github.com/aws-actions/configure-aws-credentials/issues/112
+      - name: Configure AWS credentials using OIDC
+        id: configure-aws-credentials
+        uses: Moulick/configure-multiple-aws-roles@v4
+        with:
+          role-to-assume: arn:aws:iam::052701461513:role/terrateam
+          aws-region: eu-central-1
+          profile: devops-dev
 
       - name: ${{ fromJSON(github.event.inputs.spec).job_id }}
         run: echo "job id ${{ fromJSON(github.event.inputs.spec).job_id }}"
-
-      - name: get gh token from my-gh-app
-        id: gh-app-auth
-        uses: getsentry/action-github-app-token@v1
-        with:
-          app_id: ${{ secrets.GH_APP_ID }}
-          private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
-
-      - name: hack for github internal repo access
-        run: git config --global url."https://x-access-token:${{ steps.gh-app-auth.outputs.token }}@github.com".insteadOf ssh://git@github.com
 
       - uses: diggerhq/digger@vLatest
         with:
