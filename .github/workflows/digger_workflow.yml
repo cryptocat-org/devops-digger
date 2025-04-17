@@ -31,6 +31,7 @@ jobs:
           echo "${{ secrets.DIGGER_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
+
       # https://github.com/aws-actions/configure-aws-credentials/issues/112
       - name: Configure AWS credentials using OIDC
         id: configure-aws-credentials
