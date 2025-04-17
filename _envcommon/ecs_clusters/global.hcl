@@ -52,8 +52,8 @@ dependency "vpc" {
 
   # Configure mock outputs for the `validate` command that are returned when there are no outputs available (e.g the
   # module hasn't been applied yet.
-  mock_outputs_allowed_terraform_commands = ["init", "plan", "validate", "output"]
-  mock_outputs_merge_strategy_with_state  = "shallow"
+  mock_outputs_allowed_terraform_commands = ["init", "plan", "validate"]
+  #mock_outputs_merge_strategy_with_state  = "shallow"
 
   mock_outputs = {
     private_subnets  = ["subnet-123456"]
