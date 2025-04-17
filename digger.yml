@@ -1,21 +1,22 @@
-telemetry: false
-generate_projects:
-  blocks:
-    - block_name: dev
-      terragrunt: true
-      root_dir: "devops-dev/"
-      workflow: default
-      workflow_file: digger_workflow.yml
-      terragrunt_parsing:
-        parallel: true
-        createProjectName: true
-  auto_merge: true
-workflows:
-  default:
-    plan:
-      steps:
-        - validate
-        - plan
+#telemetry: false
+#generate_projects:
+#  blocks:
+#    - block_name: dev
+#      terragrunt: true
+#      root_dir: "devops-dev/"
+#      workflow: default
+#      workflow_file: digger_workflow.yml
+#      terragrunt_parsing:
+#        parallel: true
+#        createProjectName: true
+#        executionOrderGroups: true
+#  auto_merge: true
+#workflows:
+#  default:
+#    plan:
+#      steps:
+#        - validate
+#        - plan
 #        - run: echo "Terragrunt generation!"
 #    apply:
 #      steps:
@@ -23,19 +24,20 @@ workflows:
 #        - plan
 #        - apply
 #
+
+
 #auto_merge: true
-#generate_projects:
-#  terragrunt_parsing:
-#    parallel: true
-#    createProjectName: true
-#    createWorkspace: true
-#    defaultWorkflow: default
-#    workflow_file: digger_workflow.yml
-##    executionOrderGroups: true
-#workflows:
-#  default:
-#    plan:
-#      steps:
-#        - init
-#        - plan
-#        - run: echo "Terragrunt generation!"
+generate_projects:
+  terragrunt_parsing:
+    parallel: true
+    createProjectName: true
+    createWorkspace: true
+    defaultWorkflow: default
+    workflow_file: digger_workflow.yml
+    executionOrderGroups: true
+workflows:
+  default:
+    plan:
+      steps:
+        - plan
+        - run: echo "Terragrunt generation!"
