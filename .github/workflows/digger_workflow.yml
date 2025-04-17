@@ -47,12 +47,16 @@ jobs:
       - uses: diggerhq/digger@vLatest
         with:
           digger-spec: ${{ inputs.spec }}
-          setup-terragrunt: true
+
           # https://github.com/gruntwork-io/terragrunt/releases
+          setup-terragrunt: true
           terragrunt-version: 0.77.6
           cache-dependencies: true
+
+          # https://github.com/hashicorp/terraform/releases
           setup-terraform: true
-          setup-tfenv: true
+          terraform-version: v1.11.3
+
           setup-aws: true
           aws-role-to-assume: arn:aws:iam::052701461513:role/terrateam
         env:
