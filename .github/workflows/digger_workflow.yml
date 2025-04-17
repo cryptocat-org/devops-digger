@@ -51,7 +51,7 @@ jobs:
           # https://github.com/gruntwork-io/terragrunt/releases
           setup-terragrunt: true
           terragrunt-version: 0.77.6
-          cache-dependencies: true
+          #cache-dependencies: true
 
           # https://github.com/hashicorp/terraform/releases
           setup-terraform: true
